@@ -12,7 +12,6 @@ import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
 import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
-import sun.java2d.pipe.RegionIterator;
 
 import javax.inject.Named;
 
@@ -66,14 +65,14 @@ public class ForumServiceModule extends AbstractModule {
 
     @Provides
     @Singleton
-    public DynamoDbTable<PostData> provideUserDataTable(final DynamoDbEnhancedClient dynamoDbEnhancedClient,
+    public DynamoDbTable<PostData> providePostDataTable(final DynamoDbEnhancedClient dynamoDbEnhancedClient,
                                                         @Named("postTableName") final String tableName) {
         return dynamoDbEnhancedClient.table(tableName, TableSchema.fromBean(PostData.class));
     }
 
     @Provides
     @Singleton
-    public DynamoDbTable<CategoryData> provideUserDataTable(final DynamoDbEnhancedClient dynamoDbEnhancedClient,
+    public DynamoDbTable<CategoryData> provideCategoryDataTable(final DynamoDbEnhancedClient dynamoDbEnhancedClient,
                                                                  @Named("categoryTableName") final String tableName) {
         return dynamoDbEnhancedClient.table(tableName, TableSchema.fromBean(CategoryData.class));
     }
