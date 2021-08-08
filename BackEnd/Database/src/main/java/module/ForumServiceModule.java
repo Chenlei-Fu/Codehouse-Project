@@ -40,19 +40,19 @@ public class ForumServiceModule extends AbstractModule {
     @Provides
     @Named("userTableName")
     public String provideUserTableName() {
-        return "userTableName";
+        return "userTable";
     }
 
     @Provides
     @Named("postTableName")
     public String providePostTableName() {
-        return "postTableName";
+        return "postTable";
     }
 
     @Provides
     @Named("categoryTableName")
     public String provideCategoryTableName() {
-        return "categoryTableName";
+        return "categoryTable";
     }
 
 
