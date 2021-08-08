@@ -1,0 +1,49 @@
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+#    org.springframework.boot.autoconfigure: DEBUG
+
+spring:
+  thymeleaf:
+    cache: false
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: your-app-client-id
+            client-secret: your-app-client-secret
+          github:
+            client-id: 4be2aafe61d89208c98d
+            client-secret: 01ed8cf80b64a9ea9ce54d7c77503853ef22295f
+          facebook:
+            client-id: your-app-client-id
+            client-secret: your-app-client-secret
+          okta:
+            client-id: your-app-client-id
+            client-secret: your-app-client-secret
+          linkedin:
+            client-id: 86tu612jwu5qpj
+            client-secret: D37Ekjog8UuOt6CR
+            scope: r_emailaddress,r_liteprofile
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            client-name: LinkedIn
+            client-authentication-method: post
+            authorization-grant-type: authorization_code
+        provider:
+          okta:
+            authorization-uri: https://dev-7103477-admin.okta.com/oauth2/v1/authorize
+            token-uri: https://dev-7103477-admin.okta.com/oauth2/v1/token
+            user-info-uri: https://dev-7103477-admin.okta.com/oauth2/v1/userinfo
+            jwk-set-uri: https://dev-7103477-admin.okta.com/oauth2/v1/keys
+          linkedin:
+            authorization-uri: https://www.linkedin.com/oauth/v2/authorization
+            token-uri: https://www.linkedin.com/uas/oauth2/accessToken
+            user-info-uri: https://api.linkedin.com/v2/me
+            jwk-set-uri:
+            user-name-attribute: id
+
+
+
