@@ -13,7 +13,7 @@ class AppHeader extends Component {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/discussion-board">Discussion Board</Nav.Link>
+                            <Nav.Link href="/forum">Forum</Nav.Link>
                         </Nav>
                             <Nav className="app-nav">
                                 { this.props.authenticated ? (

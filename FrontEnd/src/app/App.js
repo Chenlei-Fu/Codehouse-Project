@@ -18,6 +18,8 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
+import ListAllPosts from "../posts/ListAllPosts";
+import ListByTag from "../posts/ListByTag";
 
 class App extends Component {
   constructor(props) {
@@ -77,6 +79,7 @@ class App extends Component {
         <div className="app-body">
           <Switch>
             <Route exact path="/" component={Home}/>
+            <Route path="/forum" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={ListAllPosts} exact />
             <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
     component={Profile}/>
             <Route path="/login"
