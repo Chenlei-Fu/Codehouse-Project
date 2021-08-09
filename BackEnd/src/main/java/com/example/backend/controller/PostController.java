@@ -30,12 +30,23 @@ public class PostController {
     private PostService postService;
 
     @PostMapping
+    ///@PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> createPost(@Valid @RequestBody PostRequest postRequest) {
         Post post = postService.createPost(postRequest);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/{postId}")
                 .buildAndExpand(post.getPostId()).toUri();
         return ResponseEntity.created(location).body(new ApiResponse(true, "Post Create successfully"));
+    }
+
+    @GetMapping
+    public List<Post> getAllPosts() {
+        return postService.getAllPosts();
+    }
+
+    @GetMapping("/{id}")
+    public Post getPostById(@PathVariable Long id) {
+        return postService.getPostById(id);
     }
 
     @GetMapping("/{postId}/comments")

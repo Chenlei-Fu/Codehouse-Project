@@ -70,35 +70,9 @@ public class PostService {
         return commentRepository.save(comment);
     }
 
-//    public PagedResponse<PostResponse> getAllPosts(Long currentUser, int page, int size) {
-//        validatePageNumberAndSize(page, size);
-//        // Retrieve Posts
-//        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, "createdAt");
-//        Page<Post> posts = postRepository.findAll(pageable);
-//
-//        if(posts.getNumberOfElements() == 0) {
-//        return new PagedResponse<>(Collections.emptyList(), posts.getNumber(),
-//                posts.getSize(), posts.getTotalElements(), posts.getTotalPages(), posts.isLast());
-//        }
-//
-//        //Map posts to PostResponse
-//        List<Long> postIds = post.map(Post::getPostId).getContent();
-//
-//        List<PostResponse> postResponseList = new ArrayList();
-//        for(Post post: postIds){
-//            PostResponse postResponse = new PostResponse();
-//            postResponse.setId(post.getPostId());
-//            postResponse.setPostBody(post.getPostBody());
-//            postResponse.setPostTitle(post.getPostTitle());
-//            postResponse.setPostOwnerId(post.getPostOwnerId());
-//            postResponse.addCategory(post.getCategory());
-//            postResponse.setComments(post.getComments());
-//            postResponse.setCreateTime(post.getCreateTime());
-//            postResponseList.add(postResponse);
-//        }
-//        return new PagedResponse<postResponses, posts.getNumber, posts.getSize(),
-//         posts.getTotalElements(), posts.getTotalPages(), posts.isLast());
-//    }
+    public List<Post> getAllPosts() {
+        return postRepository.findAllPosts();
+    }
     
     public List<Post> getPostsByCategoryId(CategoryRequest categoryRequest) {
         List<Post> posts = categoryRepository.getPostsByCategoryId(categoryRequest.getCategoryId());
@@ -108,6 +82,11 @@ public class PostService {
     public List<Post> getPostsByCategoryName(CategoryRequest categoryRequest) {
         List<Post> posts = categoryRepository.getPostsByCategoryName(categoryRequest.getCategoryName());
         return posts;
+    }
+
+    public Post getPostById(Long id) {
+        Post post = postRepository.findById(id).orElseThrow(() -> new AppException("get Post by Title failed"));
+        return post;
     }
 
     public PostResponse getCommentsByPostId(Long postId) {
@@ -135,13 +114,4 @@ public class PostService {
         return postResponseList;
     }
 
-//    private void validatePageNumberAndSize(int page, int size) {
-//        if(page < 0) {
-//            throw new BadRequestException("Page number cannot be less than zero.");
-//        }
-//
-//        if(size > AppConstants.MAX_PAGE_SIZE) {
-//            throw new BadRequestException("Page size must not be greater than " + AppConstants.MAX_PAGE_SIZE);
-//        }
-//    }
 }
