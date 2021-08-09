@@ -44,7 +44,6 @@ class UploadPost extends Component {
     }
 
     handleSubmit(event) {
-        debugger;
        // const form = currentTarget;
         /*
         const postData = {

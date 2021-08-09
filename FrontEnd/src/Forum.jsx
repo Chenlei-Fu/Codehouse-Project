@@ -61,7 +61,6 @@ class Forum extends Component {
         this.setState({categories: categories});
     }
     render() {
-        debugger;
         return (
             <div className="home-container">
                     <Container fluid="xl">
@@ -102,7 +101,7 @@ class Forum extends Component {
                                     <Col xs={12} md={8}>
                                         <Switch>
                                             <Route exact path="/forum" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={ListAllPosts} />
-                                            <Route exact path="/forum/tag/:tagLabel" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={ListByTag} />
+                                            <Route path="/forum/tag/:tagLabel" render={(props) => <ListByTag {...props} authenticated={this.props.authenticated} currentUser={this.props.currentUser} baseRoute="/forum" />} />
                                             <Route path="/forum/new" render={(props) => <UploadPost {...props} currentUser={this.props.currentUser} baseRoute="/forum" />} />
                                             <Route exact path="/forum/post/:postId" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={PostDetails} />
                                         </Switch>
