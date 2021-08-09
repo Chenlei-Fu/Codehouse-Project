@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PostList from "./PostList";
+import {createPost, listAllPosts} from "../util/APIUtils";
+import Alert from "react-s-alert";
 //List all posts
 class ListAllPosts extends Component {
 
@@ -15,7 +17,7 @@ class ListAllPosts extends Component {
 
     // Retrieve data via GET request and re-render page
     loadPosts() {
-        console.log("I'm here");
+       // console.log("I'm here");
         /*
         $.ajax({
             url:"http://localhost:8080/api/posts",
@@ -26,24 +28,41 @@ class ListAllPosts extends Component {
                 this.setState({list:response});
             }.bind(this)
         });*/
-        const response = [
-                {
-                    'id': '1',
-                    'postTitle': 'Is compensation fair for a New Grad?',
-                    'postOwnerId': 'foobar',
-                    'postBody': 'I have been offered $X for a new grad role but I found out my male classmate was offered more' +
-                        'Is this a fair compensation for my level?',
-                    "categories" : ['compensation', 'companyY']
-                },
-                {
-                    'id': '2',
-                    'postTitle': 'Looking for new growth opportunities?',
-                    'postOwnerId': 'foobar',
-                    'postBody': 'I want to switch companies? Does anyone have suggestions of companies and teams with a diversity mission',
-                    "categories" : ['job', 'companyY']
-                }
+        let listAllResponse = '';
+        listAllPosts()
+            .then(response => {
+                const dummyResponse = [
+                    {
+                        'id': '1',
+                        'postTitle': 'Is compensation fair for a New Grad?',
+                        'postOwnerId': 'foobar',
+                        'postBody': 'I have been offered $X for a new grad role but I found out my male classmate was offered more' +
+                            'Is this a fair compensation for my level?',
+                        "categories" : ['compensation', 'companyY']
+                    },
+                    {
+                        'id': '2',
+                        'postTitle': 'Looking for new growth opportunities?',
+                        'postOwnerId': 'foobar',
+                        'postBody': 'I want to switch companies? Does anyone have suggestions of companies and teams with a diversity mission',
+                        "categories" : ['job', 'companyY']
+                    }
                 ];
-            this.setState({list:response});
+
+                //let joined = ;
+                this.setState({list:dummyResponse.concat(response)});
+            }).catch(error => {
+            if(error.status === 401) {
+                console.log((error));
+            } else {
+                console.log(error.message);
+            }
+        });
+        //console.log(listAllResponse);
+
+
+
+            //this.setState({list:response});
     }
 
     render() {

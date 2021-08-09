@@ -52,7 +52,7 @@ export function createPost(postData) {
 
 export function listAllPosts() {
     return request({
-        url: API_BASE_URL + "/getAllPosts",
+        url: API_BASE_URL + "/posts",
         method: 'GET'
     });
 }
