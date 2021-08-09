@@ -29,13 +29,16 @@ class ListAllPosts extends Component {
         const response = [
                 {
                     'id': '1',
-                    'title': 'hello world',
+                    'title': 'Is compensation fair for a New Grad?',
                     'author': {
                         'name': 'foobar'
                     },
-                    'content': 'Yay!',
+                    'content': 'I have been offered $X for a new grad role but I found out my male classmate was offered more' +
+                        'Is this a fair compensation for my level?',
                     "categories" : [{
-                        "label": "CompanyA"
+                        'label': 'compensation'
+                    }, {
+                        'label': 'companyY'
                     }]
                 },
                 ];

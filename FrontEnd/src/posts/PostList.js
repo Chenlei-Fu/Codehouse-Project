@@ -48,16 +48,11 @@ function PostList(props) {
                                         post.categories.map(function(category){
                                             return (
                                                 <Link key={category.label} to={"/forum/tag/"+category.label}
-                                                      className={`post-category ${selectTagStyle(category.label)}`}>{category.label}</Link>
+                                                      className={`post-category ${selectTagStyle(category.label)}`}>{category.label} </Link>
                                             )
                                         })
                                     }
                                 </td>
-
-                                <td>
-                                    <p>{post.content}</p>
-                                </td>
-
                             </tr>
                         )
                     })
