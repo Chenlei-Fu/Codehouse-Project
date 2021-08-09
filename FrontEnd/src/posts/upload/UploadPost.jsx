@@ -36,6 +36,13 @@ class UploadPost extends Component {
             this.setState({currentUser : this.props.currentUser})
         }
     }
+    /*
+    handleSelectChange(event) {
+        let split = event.target.value.split(",")
+        this.setState(prevState => ({
+            categoriesChosen: event.target.value.split(",")
+        }))
+    }*/
 
     handleChange(event) {
        // debugger;
@@ -57,15 +64,18 @@ class UploadPost extends Component {
                 'label': 'companyY'
             }]
         };*/
+        debugger;
         const postData = {
             postTitle: this.state.postTitle,
             postBody: this.state.postBody,
             postOwnerId: this.props.currentUser.id,
+            categories: this.state.categoriesChosen
+            /*
             categories: [{
                 'label': 'compensation'
             }, {
                 'label': 'companyY'
-            }]
+            }]*/
         }
 
         createPost(postData)
@@ -111,16 +121,9 @@ class UploadPost extends Component {
                     <Form.Group className="mb-3" controlId="postBody" value={this.state.postBody} onChange={this.handleChange}>
                         <Form.Control required as="textarea" rows={5} />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="categories" value={this.state.categoriesChosen}>
-                        <Form.Label>Tags</Form.Label>
-                        <Form.Control as="select" multiple value={this.state.categories}>
-                            {
-                                this.state.categories.map(category => (
-                                <option value={category.value}>
-                                    {category.value}
-                                </option>
-                            ))}
-                        </Form.Control>
+                    <Form.Group className="mb-3" controlId="categoriesChosen" value={this.state.categoriesChosen} onChange={this.handleChange}>
+                        <Form.Label>Categories</Form.Label>
+                        <Form.Control required as="textarea" rows={5} />
                     </Form.Group>
 
                     <Button variant="primary" type="submit" onSubmit={(e) => this.handleSubmit(e)}>
