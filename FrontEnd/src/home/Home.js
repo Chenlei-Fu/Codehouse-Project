@@ -24,7 +24,7 @@ class Home extends Component {
         return (
             <div className="home-container">
                 <div className="container">
-                    <h1 className="home-title">Welcome to our Connect Four Discussion Board!</h1>
+                    <h1 className="home-title">Welcome to our Circles!</h1>
                 </div>
                 { this.props.authenticated ? (
                         <Profile authenticated={this.state.authenticated} currentUser={this.state.currentUser}/>

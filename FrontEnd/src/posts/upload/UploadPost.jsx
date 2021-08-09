@@ -26,6 +26,7 @@ class UploadPost extends Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSelectChange = this.handleSelectChange.bind(this);
     }
 
     componentDidUpdate(nextProps) {
@@ -36,13 +37,13 @@ class UploadPost extends Component {
             this.setState({currentUser : this.props.currentUser})
         }
     }
-    /*
+
     handleSelectChange(event) {
         let split = event.target.value.split(",")
         this.setState(prevState => ({
             categoriesChosen: event.target.value.split(",")
         }))
-    }*/
+    }
 
     handleChange(event) {
        // debugger;
@@ -64,12 +65,11 @@ class UploadPost extends Component {
                 'label': 'companyY'
             }]
         };*/
-        debugger;
         const postData = {
             postTitle: this.state.postTitle,
             postBody: this.state.postBody,
             postOwnerId: this.props.currentUser.id,
-            categories: this.state.categoriesChosen
+            categories: this.state.categoriesChosen.split(",")
             /*
             categories: [{
                 'label': 'compensation'
@@ -77,6 +77,7 @@ class UploadPost extends Component {
                 'label': 'companyY'
             }]*/
         }
+        console.log(postData)
 
         createPost(postData)
             .then(response => {
