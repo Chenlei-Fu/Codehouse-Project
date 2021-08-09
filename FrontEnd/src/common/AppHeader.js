@@ -16,7 +16,10 @@ class AppHeader extends Component {
                                 pathname: '/',
                                 state: { authenticated: this.props.authenticated, currentUser: this.props.currentUser},
                             }} >Home</Nav.Link>
-                            <Nav.Link href="/forum">Forum</Nav.Link>
+                            <Nav.Link as={Link} to={{
+                                pathname: '/forum',
+                                state: { authenticated: this.props.authenticated, currentUser: this.props.currentUser},
+                            }}>Forum</Nav.Link>
                         </Nav>
                             <Nav className="app-nav">
                                 { this.props.authenticated ? (
