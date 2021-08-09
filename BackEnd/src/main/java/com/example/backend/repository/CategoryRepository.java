@@ -17,4 +17,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
 
     @Query("SELECT c.postList FROM Category c where c.categoryName = :categoryName")
     List<Post> getPostsByCategoryName(@Param("categoryName") String categoryName);
+    
+    @Query(value = "SELECT * FROM Category", nativeQuery = true)
+    List<Category> findAllCategories();
 }
