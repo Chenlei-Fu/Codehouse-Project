@@ -12,6 +12,7 @@ class Forum extends Component {
     constructor(props) {
         super(props);
         this.state={
+            currentUser: false,
             categories:[]
         }
         this.loadCategories = this.loadCategories.bind(this);
@@ -32,12 +33,12 @@ class Forum extends Component {
         this.setState({categories: categories});
     }
     render() {
+        debugger;
         return (
             <div className="home-container">
                 <div className="container">
                     <h1 className="home-title">Welcome to our Connect Four Discussion Board!</h1>
                 </div>
-                { this.props.authenticated ? (
                     <Container fluid="xl">
                         <Row className="justify-content-md-center">
                             <Col xs={15} md={10} className="justify-content-md-center">
@@ -82,7 +83,6 @@ class Forum extends Component {
                             </Container>
                         </div>
                     </Container>
-                ) : (<Login authenticated={this.state.authenticated} {...this.props}/>) }
             </div>
         )
     }
