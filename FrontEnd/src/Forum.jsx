@@ -5,14 +5,24 @@ import ListAllPosts from "./posts/ListAllPosts";
 import ListByTag from "./posts/ListByTag";
 import UploadPost from "./posts/upload/UploadPost";
 import PostDetails from "./posts/PostDetails";
+import {Button, Col, Container, Row} from "react-bootstrap";
 
 class Forum extends Component {
     //let { path, url } = useRouteMatch();
     render() {
     return (
-        <div>
+        <Container fluid="xl">
             <div className="header">
-                <h1>Discussion Board</h1>
+                <Row>
+                    <Col xs={15} md={10}>
+                        <h1>Discussion Board</h1>
+                    </Col>
+                    <Col xs={3} md={2}>
+                        <Button variant="secondary" href="/forum/new"> Create New Post </Button>
+                    </Col>
+                </Row>
+
+
             </div>
             <div className="content" id="content">
                 <Switch>
@@ -22,7 +32,7 @@ class Forum extends Component {
                     <Route exact path="/forum/post/:postId" component={PostDetails} />
                 </Switch>
             </div>
-        </div>
+        </Container>
     );
 }
 }

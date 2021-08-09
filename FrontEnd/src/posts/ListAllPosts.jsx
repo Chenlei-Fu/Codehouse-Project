@@ -41,6 +41,19 @@ class ListAllPosts extends Component {
                         'label': 'companyY'
                     }]
                 },
+                {
+                    'id': '1',
+                    'title': 'Looking for new growth opportunities?',
+                    'author': {
+                        'name': 'Jane Doe'
+                    },
+                    'content': 'I want to switch companies? Does anyone have suggestions of companies and teams with a diversity mission',
+                    "categories" : [{
+                        'label': 'job'
+                    }, {
+                        'label': 'companyY'
+                    }]
+                }
                 ];
             this.setState({list:response});
     }
