@@ -37,6 +37,13 @@ class UploadPost extends Component {
             this.setState({currentUser : this.props.currentUser})
         }
     }
+    /*
+    handleSelectChange(event) {
+        let split = event.target.value.split(",")
+        this.setState(prevState => ({
+            categoriesChosen: event.target.value.split(",")
+        }))
+    }*/
 
     handleSelectChange(event) {
         let split = event.target.value.split(",")
@@ -65,6 +72,7 @@ class UploadPost extends Component {
                 'label': 'companyY'
             }]
         };*/
+        debugger;
         const postData = {
             postTitle: this.state.postTitle,
             postBody: this.state.postBody,
