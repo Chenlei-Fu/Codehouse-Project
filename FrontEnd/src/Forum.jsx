@@ -69,7 +69,7 @@ class Forum extends Component {
                                 <h1>Discussion Board</h1>
                             </Col>
                             <Col xs={3} md={2}>
-                                <Button variant="secondary" ><Link to={{
+                                <Button variant="secondary" ><Link style={{color:'black'}} to={{
                                     pathname: '/forum/new',
                                     state: { authenticated: this.state.authenticated, currentUser: this.state.currentUser},
                                 }}> Create New Post </Link> </Button>

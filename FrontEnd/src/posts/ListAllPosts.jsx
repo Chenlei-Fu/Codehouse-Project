@@ -50,6 +50,7 @@ class ListAllPosts extends Component {
                 ];
 
                 //let joined = ;
+                console.log(response)
                 this.setState({list:dummyResponse.concat(response)});
             }).catch(error => {
             if(error.status === 401) {
