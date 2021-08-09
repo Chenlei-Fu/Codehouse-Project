@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {Table} from "react-bootstrap";
+import {Container, Table} from "react-bootstrap";
 
 function selectTagStyle(tag) {
     const number = (tag.trim().length + 4) % 5;
@@ -12,55 +12,58 @@ function PostList(props) {
     return(
         <div>
             { /*A wrapper for all the blog posts*/ }
-            <h1 className="content-subhead">{props.label}</h1>
 
-            <Table striped bordered hover size="sm">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Categories</th>
-                </tr>
-                </thead>
-                <tbody>
+            <Container fluid = "lg">
+                <h1 className="content-subhead">{props.label}</h1>
+                <Table striped bordered hover size="sm">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Categories</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
 
-                {
-                    //Iterates to display each post in decreasing order of publication
-                    props.list.map(function(post){
-                        return (
+                    {
+                        //Iterates to display each post in decreasing order of publication
+                        props.list.map(function(post){
+                            return (
 
-                            <tr>
-                                <td>
-                                    {post.id}
-                                </td>
-                                <td>
-                                    <h6> {post.title}</h6>
-                                </td>
+                                <tr>
+                                    <td>
+                                        {post.id}
+                                    </td>
+                                    <td>
+                                        <h6> {post.title}</h6>
+                                    </td>
 
-                                <td>
-                                    <i> {post.author.name}</i>
-                                </td>
+                                    <td>
+                                        <i> {post.author.name}</i>
+                                    </td>
 
-                                <td>
-                                    {
-                                        post.categories.map(function(category){
-                                            return (
-                                                <Link key={category.label} to={"/forum/tag/"+category.label}
-                                                      className={`post-category ${selectTagStyle(category.label)}`}>{category.label} </Link>
-                                            )
-                                        })
-                                    }
-                                </td>
-                            </tr>
-                        )
-                    })
-                }
+                                    <td>
+                                        {
+                                            post.categories.map(function(category){
+                                                return (
+                                                    <Link key={category.label} to={"/forum/tag/"+category.label}
+                                                          className={`post-category ${selectTagStyle(category.label)}`}>{category.label} </Link>
+                                                )
+                                            })
+                                        }
+                                    </td>
+                                </tr>
+                            )
+                        })
+                    }
 
-                </tbody>
+                    </tbody>
 
                 </Table>
+            </Container>
+
             </div>
     )
 }
