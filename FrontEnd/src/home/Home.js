@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
 import './Home.css';
-import {createPoll} from "../util/APIUtils";
-
+import Login from "../user/login/Login";
+import Profile from "../user/profile/Profile";
 class Home extends Component {
-    componentDidMount() {
-        // Simple POST request with a JSON body using fetch
-        const postData = {
-            postTitle: 'Hi',
-            postBody: 'Hey',
-            postOwnerId: 1
-        };
+    constructor(props) {
+        super(props);
+        this.state = {
+            authenticated: false,
+            currentUser: ""
+        }
+    }
 
-        createPoll(postData)
-            .then(response => {
-                console.log(response);
-            }).catch(error => {
-            if(error.status === 401) {
-                console.log((error));
-            } else {
-                console.log(error.message);
-            }
-        });
+    componentWillReceiveProps(nextProps) {
+        debugger;
+        if(!this.props.authenticated && nextProps.authenticated) {
+            this.setState({authenticated : this.props.authenticated})
+        }
+        if (!this.props.currentUser && nextProps.currentUser) {
+            this.setState({currentUser : this.props.currentUser})
+        }
     }
     render() {
         return (
             <div className="home-container">
                 <div className="container">
-                    <h1 className="home-title">Connect Four</h1>
+                    <h1 className="home-title">Welcome to our Connect Four Discussion Board!</h1>
                 </div>
+                { this.props.authenticated ? (
+                        <Profile authenticated={this.state.authenticated} currentUser={this.state.currentUser}/>
+                    ) : (<Login authenticated={this.state.authenticated} {...this.props}/>) }
             </div>
         )
     }

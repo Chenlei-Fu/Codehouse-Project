@@ -20,6 +20,7 @@ import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
 import ListAllPosts from "../posts/ListAllPosts";
 import ListByTag from "../posts/ListByTag";
+import Forum from "../Forum";
 
 class App extends Component {
   constructor(props) {
@@ -78,8 +79,9 @@ class App extends Component {
         </div>
         <div className="app-body">
           <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="/forum" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={ListAllPosts} exact />
+            <Route path="/" render={(props) => <Home authenticated={this.state.authenticated} currentUser={this.state.currentUser} {...props} />} exact />
+            <Route path="/forum" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={Forum} />
+            <Route path="/forum/new" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={ListAllPosts} exact />
             <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
     component={Profile}/>
             <Route path="/login"

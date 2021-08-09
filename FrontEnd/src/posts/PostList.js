@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {Table} from "react-bootstrap";
+import {Button, Container, Table} from "react-bootstrap";
 
 function selectTagStyle(tag) {
     const number = (tag.trim().length + 4) % 5;
     return `post-category-${number+1}`;
+}
+
+function Td({ children, to }) {
+    // Conditionally wrapping content into a link
+    const ContentTag = to ? Link : 'div';
+
+    return (
+        <td>
+            <ContentTag to={to}>{children}</ContentTag>
+        </td>
+    );
 }
 
 //Writes the list of posts
@@ -12,55 +23,61 @@ function PostList(props) {
     return(
         <div>
             { /*A wrapper for all the blog posts*/ }
-            <h1 className="content-subhead">{props.label}</h1>
 
-            <Table striped bordered hover size="sm">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Categories</th>
-                </tr>
-                </thead>
-                <tbody>
+            <Container fluid = "lg">
+                <h1 className="content-subhead">{props.label}</h1>
+                <Table striped bordered hover size="sm">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Categories</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
 
-                {
-                    //Iterates to display each post in decreasing order of publication
-                    props.list.map(function(post){
-                        return (
+                    {
+                        //Iterates to display each post in decreasing order of publication
+                        props.list.map(function(post){
+                            return (
 
-                            <tr>
-                                <td>
-                                    {post.id}
-                                </td>
-                                <td>
-                                    <h6> {post.title}</h6>
-                                </td>
+                                <tr key={post.id}>
+                                    <Td to={`/forum/post/${post.id}`}>
+                                        {post.id}
+                                    </Td>
+                                    <Td to={`/forum/post/${post.id}`}>
+                                        <h6> {post.title}</h6>
+                                    </Td>
 
-                                <td>
-                                    <i> {post.author.name}</i>
-                                </td>
+                                    <Td to={`/forum/post/${post.id}`}>
+                                        <i> {post.author.name}</i>
+                                    </Td>
 
-                                <td>
-                                    {
-                                        post.categories.map(function(category){
-                                            return (
-                                                <Link key={category.label} to={"/forum/tag/"+category.label}
-                                                      className={`post-category ${selectTagStyle(category.label)}`}>{category.label} </Link>
-                                            )
-                                        })
-                                    }
-                                </td>
-                            </tr>
-                        )
-                    })
-                }
+                                    <Td>
+                                        {
+                                            post.categories.map(function(category){
+                                                return (
+                                                    <Button variant="secondary" href={"/forum/tag/"+category.label}>
+                                                        {category.label} </Button>
+                                                    /*
+                                                    <Link key={category.label} to={"/forum/tag/"+category.label}
+                                                          className={`post-category ${selectTagStyle(category.label)}`}>{category.label} </Link>*/
+                                                )
+                                            })
+                                        }
+                                    </Td>
+                                </tr>
+                            )
+                        })
+                    }
 
-                </tbody>
+                    </tbody>
 
                 </Table>
+            </Container>
+
             </div>
     )
 }
