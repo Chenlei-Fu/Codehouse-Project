@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {Container, Table} from "react-bootstrap";
+import {Button, Container, Table} from "react-bootstrap";
 
 function selectTagStyle(tag) {
     const number = (tag.trim().length + 4) % 5;
@@ -48,8 +48,11 @@ function PostList(props) {
                                         {
                                             post.categories.map(function(category){
                                                 return (
+                                                    <Button variant="secondary" href={"/forum/tag/"+category.label}>
+                                                        {category.label} </Button>
+                                                    /*
                                                     <Link key={category.label} to={"/forum/tag/"+category.label}
-                                                          className={`post-category ${selectTagStyle(category.label)}`}>{category.label} </Link>
+                                                          className={`post-category ${selectTagStyle(category.label)}`}>{category.label} </Link>*/
                                                 )
                                             })
                                         }
