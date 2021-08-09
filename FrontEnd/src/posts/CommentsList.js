@@ -16,7 +16,7 @@ function CommentsList(props) {
                         //Iterates to display each post in decreasing order of publication
                         props.list.map(function(comment){
                             return (
-                            <Card bg="secondary" style={{ width: '60rem'}} className="mb-2" >
+                            <Card bg="secondary" style={{ width: '40rem'}} className="mb-2" >
                                 <CardHeader>
                                     <Row>
                                         <Col xs={14} md={9}>
