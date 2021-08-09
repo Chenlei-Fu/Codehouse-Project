@@ -1,6 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.model.Post;
+import com.example.backend.model.Category;
 import com.example.backend.payload.ApiResponse;
 import com.example.backend.payload.PostRequest;
 import com.example.backend.payload.PostResponse;
@@ -57,5 +58,15 @@ public class PostController {
     @GetMapping("/{userId}/posts")
     public List<PostResponse> getPostsByUser(@PathVariable Long userId) {
         return postService.getPostByUser(userId);
+    }
+
+    @GetMapping("/{categoryId}/posts")
+    public List<Post> getPostByCategory(@PathVariable Long categoryId) {
+        return postService.getPostsByCategoryId(categoryId);
+    }
+
+    @GetMapping("/categories")
+    public List<Category> getAllCategories() {
+        return postService.getAllCategories();
     }
 }

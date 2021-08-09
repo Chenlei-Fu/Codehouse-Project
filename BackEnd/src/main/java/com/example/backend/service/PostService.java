@@ -73,14 +73,14 @@ public class PostService {
     public List<Post> getAllPosts() {
         return postRepository.findAllPosts();
     }
-    
-    public List<Post> getPostsByCategoryId(CategoryRequest categoryRequest) {
-        List<Post> posts = categoryRepository.getPostsByCategoryId(categoryRequest.getCategoryId());
+
+    public List<Post> getPostsByCategoryId(Long id) {
+        List<Post> posts = categoryRepository.getPostsByCategoryId(id);
         return posts;
     }
-
-    public List<Post> getPostsByCategoryName(CategoryRequest categoryRequest) {
-        List<Post> posts = categoryRepository.getPostsByCategoryName(categoryRequest.getCategoryName());
+    
+    public List<Post> getPostsByCategoryName(String categoryName) {
+        List<Post> posts = categoryRepository.getPostsByCategoryName(categoryName);
         return posts;
     }
 
@@ -95,6 +95,10 @@ public class PostService {
         PostResponse postResponse = new PostResponse();
         postResponse.setComments(comments);
         return postResponse;
+    }
+
+    public List<Category> getAllCategories() {
+        return categoryRepository.findAllCategories();
     }
 
     public List<PostResponse> getPostByUser(Long userId) {
