@@ -11,7 +11,7 @@ class Home extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentDidUpdate(nextProps) {
         debugger;
         if(!this.props.authenticated && nextProps.authenticated) {
             this.setState({authenticated : this.props.authenticated})

@@ -29,30 +29,18 @@ class ListAllPosts extends Component {
         const response = [
                 {
                     'id': '1',
-                    'title': 'Is compensation fair for a New Grad?',
-                    'author': {
-                        'name': 'foobar'
-                    },
-                    'content': 'I have been offered $X for a new grad role but I found out my male classmate was offered more' +
+                    'postTitle': 'Is compensation fair for a New Grad?',
+                    'postOwnerId': 'foobar',
+                    'postBody': 'I have been offered $X for a new grad role but I found out my male classmate was offered more' +
                         'Is this a fair compensation for my level?',
-                    "categories" : [{
-                        'label': 'compensation'
-                    }, {
-                        'label': 'companyY'
-                    }]
+                    "categories" : ['compensation', 'companyY']
                 },
                 {
                     'id': '2',
-                    'title': 'Looking for new growth opportunities?',
-                    'author': {
-                        'name': 'Jane Doe'
-                    },
-                    'content': 'I want to switch companies? Does anyone have suggestions of companies and teams with a diversity mission',
-                    "categories" : [{
-                        'label': 'job'
-                    }, {
-                        'label': 'companyY'
-                    }]
+                    'postTitle': 'Looking for new growth opportunities?',
+                    'postOwnerId': 'foobar',
+                    'postBody': 'I want to switch companies? Does anyone have suggestions of companies and teams with a diversity mission',
+                    "categories" : ['job', 'companyY']
                 }
                 ];
             this.setState({list:response});
