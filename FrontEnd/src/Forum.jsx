@@ -17,6 +17,7 @@ class Forum extends Component {
             currentUser: '',
             categories:[],
             authenticated: false,
+
         }
         this.loadCategories = this.loadCategories.bind(this);
         this.groupItem = this.groupItem.bind(this);
@@ -60,6 +61,7 @@ class Forum extends Component {
         this.setState({categories: categories});
     }
     render() {
+        debugger;
         return (
             <div className="home-container">
                     <Container fluid="xl">

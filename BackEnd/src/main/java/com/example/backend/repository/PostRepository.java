@@ -17,5 +17,11 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     @Query(value = "SELECT * FROM posts WHERE post_owner_id = ?1", nativeQuery = true)
     List<Post> findByUserId(Long userId);
+
+    @Query(value = "SELECT * FROM posts WHERE post_title = ?1", nativeQuery = true)
+    Optional<Post> findByTitle(String title);
+
+    @Query(value = "SELECT * FROM posts", nativeQuery = true)
+    List<Post> findAllPosts();
 }
 
