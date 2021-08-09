@@ -7,6 +7,17 @@ function selectTagStyle(tag) {
     return `post-category-${number+1}`;
 }
 
+function Td({ children, to }) {
+    // Conditionally wrapping content into a link
+    const ContentTag = to ? Link : 'div';
+
+    return (
+        <td>
+            <ContentTag to={to}>{children}</ContentTag>
+        </td>
+    );
+}
+
 //Writes the list of posts
 function PostList(props) {
     return(
@@ -32,19 +43,19 @@ function PostList(props) {
                         props.list.map(function(post){
                             return (
 
-                                <tr>
-                                    <td>
+                                <tr key={post.id}>
+                                    <Td to={`/forum/post/${post.id}`}>
                                         {post.id}
-                                    </td>
-                                    <td>
+                                    </Td>
+                                    <Td to={`/forum/post/${post.id}`}>
                                         <h6> {post.title}</h6>
-                                    </td>
+                                    </Td>
 
-                                    <td>
+                                    <Td to={`/forum/post/${post.id}`}>
                                         <i> {post.author.name}</i>
-                                    </td>
+                                    </Td>
 
-                                    <td>
+                                    <Td>
                                         {
                                             post.categories.map(function(category){
                                                 return (
@@ -56,7 +67,7 @@ function PostList(props) {
                                                 )
                                             })
                                         }
-                                    </td>
+                                    </Td>
                                 </tr>
                             )
                         })
