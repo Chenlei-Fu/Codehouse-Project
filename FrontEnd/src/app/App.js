@@ -78,7 +78,7 @@ class App extends Component {
         </div>
         <div className="app-body">
           <Switch>
-            <Route exact path="/" component={Home}/>
+            <Route path="/" render={(props) => <Home authenticated={this.state.authenticated} currentUser={this.state.currentUser} {...props} />} exact />
             <Route path="/forum" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={ListAllPosts} exact />
             <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
     component={Profile}/>

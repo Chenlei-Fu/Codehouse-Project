@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './AppHeader.css';
-import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
+import {Container, Nav, Navbar} from "react-bootstrap";
 
 class AppHeader extends Component {
     render() {
@@ -12,7 +12,10 @@ class AppHeader extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/">Home</Nav.Link>
+                            <Nav.Link as={Link} to={{
+                                pathname: '/',
+                                state: { authenticated: this.props.authenticated, currentUser: this.props.currentUser},
+                            }} >Home</Nav.Link>
                             <Nav.Link href="/forum">Forum</Nav.Link>
                         </Nav>
                             <Nav className="app-nav">
