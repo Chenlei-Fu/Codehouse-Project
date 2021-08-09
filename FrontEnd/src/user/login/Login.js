@@ -59,7 +59,7 @@ class SocialLogin extends Component {
                 <a className="btn btn-block social-btn github" href={GITHUB_AUTH_URL}>
                     <img src={githubLogo} alt="Github" /> Log in with Github</a>
                 <a className="btn btn-block social-btn linkedin" href={LINKEDIN_AUTH_URL}>
-                    <img src={linkedinLogo} alt="LinkedIn" /> Log in with Github</a>
+                    <img src={linkedinLogo} alt="LinkedIn" /> Log in with LinkedIn</a>
             </div>
         );
     }
