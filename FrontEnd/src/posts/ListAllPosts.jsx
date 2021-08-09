@@ -33,7 +33,7 @@ class ListAllPosts extends Component {
             .then(response => {
                 const dummyResponse = [
                     {
-                        'id': '1',
+                        'postId': '1',
                         'postTitle': 'Is compensation fair for a New Grad?',
                         'postOwnerId': 'foobar',
                         'postBody': 'I have been offered $X for a new grad role but I found out my male classmate was offered more' +
@@ -41,7 +41,7 @@ class ListAllPosts extends Component {
                         "categories" : ['compensation', 'companyY']
                     },
                     {
-                        'id': '2',
+                        'postId': '2',
                         'postTitle': 'Looking for new growth opportunities?',
                         'postOwnerId': 'foobar',
                         'postBody': 'I want to switch companies? Does anyone have suggestions of companies and teams with a diversity mission',

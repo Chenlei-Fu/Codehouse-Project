@@ -43,15 +43,15 @@ function PostList(props) {
                         props.list.map(function(post){
                             return (
 
-                                <tr key={post.id}>
-                                    <Td to={`/forum/post/${post.id}`}>
-                                        {post.id}
+                                <tr key={post.postId}>
+                                    <Td to={`/forum/post/${post.postId}`}>
+                                        {post.postId}
                                     </Td>
-                                    <Td to={`/forum/post/${post.id}`}>
+                                    <Td to={`/forum/post/${post.postId}`}>
                                         <h6> {post.postTitle}</h6>
                                     </Td>
 
-                                    <Td to={`/forum/post/${post.id}`}>
+                                    <Td to={`/forum/post/${post.postId}`}>
                                         <i> {post.postOwnerId}</i>
                                     </Td>
 
