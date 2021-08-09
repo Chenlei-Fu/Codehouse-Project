@@ -126,7 +126,7 @@ class PostDetails extends Component {
                     </Card.Footer>
                 </Card>
                 <CommentsList list={this.state.commentList} />
-                <Form style={{ width: '60rem'}} onSubmit={this.handleSubmit}>
+                <Form style={{ width: '50rem'}} onSubmit={this.handleSubmit}>
                     <Form.Group className="mb-3" controlId="postTitle" value={this.state.newComment} onChange={this.handleChange}>
                         <Form.Label>New Comment</Form.Label>
                         <Form.Control required as="textarea" rows={3} />
