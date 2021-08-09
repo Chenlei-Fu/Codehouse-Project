@@ -15,10 +15,6 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<Post, Long> {
     Optional<Post> findById(Long postId);
 
-    Page<Post> findByOwner(Long ownerId, Pageable pageable);
-
-    List<Post> findByCategory(String postCategory);
-
     @Query(value = "SELECT * FROM posts WHERE post_owner_id = ?1", nativeQuery = true)
     List<Post> findByUserId(Long userId);
 }

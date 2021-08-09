@@ -7,8 +7,6 @@ import UploadPost from "./posts/upload/UploadPost";
 import PostDetails from "./posts/PostDetails";
 import {Button, Card, Col, Container, ListGroup, Row} from "react-bootstrap";
 import CardHeader from "react-bootstrap/CardHeader";
-import Profile from "./user/profile/Profile";
-import Login from "./user/login/Login";
 
 class Forum extends Component {
     constructor(props) {

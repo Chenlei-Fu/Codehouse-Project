@@ -40,7 +40,7 @@ public class Post{
 	}
 
 	@OneToMany(
-		mappedBy = "commentParentPostId",
+		mappedBy = "post",
 		cascade = CascadeType.ALL,
 		fetch = FetchType.EAGER,
 		orphanRemoval = true
