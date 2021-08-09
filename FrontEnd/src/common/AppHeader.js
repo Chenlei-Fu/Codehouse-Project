@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './AppHeader.css';
+import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 
 class AppHeader extends Component {
     render() {
         return (
-            <header className="app-header">
-                <div className="container">
-                    <div className="app-branding">
-                        <Link to="/" className="app-title">Header</Link>
-                    </div>
-                    <div className="app-options">
-                        <nav className="app-nav">
+            <Navbar bg="light" expand="lg">
+                <Container>
+                    <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link href="/">Home</Nav.Link>
+                            <Nav.Link href="/forum">Forum</Nav.Link>
+                        </Nav>
+                            <Nav className="app-nav">
                                 { this.props.authenticated ? (
                                     <ul>
                                         <li>
@@ -24,17 +28,18 @@ class AppHeader extends Component {
                                 ): (
                                     <ul>
                                         <li>
-                                            <NavLink to="/login">Login</NavLink>        
+                                            <NavLink to="/login">Login</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/signup">Signup</NavLink>        
+                                            <NavLink to="/signup">Signup</NavLink>
                                         </li>
                                     </ul>
                                 )}
-                        </nav>
-                    </div>
-                </div>
-            </header>
+                            </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+
         )
     }
 }

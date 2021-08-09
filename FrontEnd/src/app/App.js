@@ -18,6 +18,8 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
+import ListAllPosts from "../posts/ListAllPosts";
+import ListByTag from "../posts/ListByTag";
 
 class App extends Component {
   constructor(props) {
@@ -76,15 +78,16 @@ class App extends Component {
         </div>
         <div className="app-body">
           <Switch>
-            <Route exact path="/" component={Home}></Route>           
+            <Route exact path="/" component={Home}/>
+            <Route path="/forum" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={ListAllPosts} exact />
             <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
-              component={Profile}></PrivateRoute>
+    component={Profile}/>
             <Route path="/login"
-              render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
+    render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
             <Route path="/signup"
-              render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}></Route>
-            <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>  
-            <Route component={NotFound}></Route>
+    render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}/>
+            <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>
+            <Route component={NotFound}/>
           </Switch>
         </div>
         <Alert stack={{limit: 3}} 
