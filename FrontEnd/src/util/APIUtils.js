@@ -42,6 +42,14 @@ export function login(loginRequest) {
     });
 }
 
+export function createPost(postData) {
+    return request({
+        url: API_BASE_URL + "/posts",
+        method: 'POST',
+        body: JSON.stringify(postData)
+    });
+}
+
 export function signup(signupRequest) {
     return request({
         url: API_BASE_URL + "/auth/signup",
