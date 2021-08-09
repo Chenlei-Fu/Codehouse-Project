@@ -1,14 +1,17 @@
 import React, {Component} from "react";
-import {Alert, Button, Container, Form} from "react-bootstrap";
+import {Button, Container, Form} from "react-bootstrap";
 import {createPost} from "../../util/APIUtils";
+import Alert from 'react-s-alert';
 
 class UploadPost extends Component {
     constructor(props) {
         super(props);
+        console.log(props);
         this.state={
             postTitle: ' ',
             postBody: ' ',
-            showAlert: true,
+            authenticated: true,
+            currentUser: '',
             categories: [{
                 'key' : 'CompanyA',
                 'value': 'CompanyA',
@@ -25,10 +28,13 @@ class UploadPost extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    setShow(alertStatus) {
-        this.setState({
-            showAlert: alertStatus
-        })
+    componentDidUpdate(nextProps) {
+        if(!this.props.authenticated && nextProps.authenticated) {
+            this.setState({authenticated : this.props.authenticated})
+        }
+        if (!this.props.currentUser && nextProps.currentUser) {
+            this.setState({currentUser : this.props.currentUser})
+        }
     }
 
     handleChange(event) {
@@ -38,7 +44,9 @@ class UploadPost extends Component {
     }
 
     handleSubmit(event) {
+        debugger;
        // const form = currentTarget;
+        /*
         const postData = {
             postTitle: 'Is compensation fair for a New Grad?',
             postBody: 'I have been offered $X for a new grad role but I found out my male classmate was offered more' +
@@ -49,19 +57,31 @@ class UploadPost extends Component {
             }, {
                 'label': 'companyY'
             }]
-        };
+        };*/
+        const postData = {
+            postTitle: this.state.postTitle,
+            postBody: this.state.postBody,
+            postOwnerId: this.props.currentUser.id,
+            categories: [{
+                'label': 'compensation'
+            }, {
+                'label': 'companyY'
+            }]
+        }
 
         createPost(postData)
             .then(response => {
                 console.log(response);
+                Alert.success("Post Successfully created");
             }).catch(error => {
             if(error.status === 401) {
                 console.log((error));
+                Alert.error("You are not authorized to create a post!");
+                event.preventDefault();
             } else {
                 console.log(error.message);
-                this.setState({
-                    showAlert: true
-                })
+                Alert.error("Could not create post");
+                event.preventDefault();
             }
         });
         event.preventDefault();
@@ -73,13 +93,14 @@ class UploadPost extends Component {
             <Container fluid="md">
                 <div>
                     {
+                        /*
                         this.state.showAlert?(
                             <Alert variant="danger" onClose={this.setShow(false)} dismissible>
                                 <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
                                 <p>
                                     Hello
                                 </p>
-                            </Alert>):null
+                            </Alert>):null*/
                     }
                 </div>
 

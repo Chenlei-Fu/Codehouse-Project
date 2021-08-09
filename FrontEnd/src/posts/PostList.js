@@ -48,19 +48,19 @@ function PostList(props) {
                                         {post.id}
                                     </Td>
                                     <Td to={`/forum/post/${post.id}`}>
-                                        <h6> {post.title}</h6>
+                                        <h6> {post.postTitle}</h6>
                                     </Td>
 
                                     <Td to={`/forum/post/${post.id}`}>
-                                        <i> {post.author.name}</i>
+                                        <i> {post.postOwnerId}</i>
                                     </Td>
 
                                     <Td>
                                         {
                                             post.categories.map(function(category){
                                                 return (
-                                                    <Button variant="secondary" href={"/forum/tag/"+category.label}>
-                                                        {category.label} </Button>
+                                                    <Button style={{margin:'0.5em'}} variant="secondary" href={"/forum/tag/"+category}>
+                                                        {category} </Button>
                                                     /*
                                                     <Link key={category.label} to={"/forum/tag/"+category.label}
                                                           className={`post-category ${selectTagStyle(category.label)}`}>{category.label} </Link>*/

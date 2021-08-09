@@ -50,6 +50,13 @@ export function createPost(postData) {
     });
 }
 
+export function listAllPosts() {
+    return request({
+        url: API_BASE_URL + "/getAllPosts",
+        method: 'GET'
+    });
+}
+
 export function signup(signupRequest) {
     return request({
         url: API_BASE_URL + "/auth/signup",
