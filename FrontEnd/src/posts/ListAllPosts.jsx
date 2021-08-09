@@ -42,7 +42,7 @@ class ListAllPosts extends Component {
                     }]
                 },
                 {
-                    'id': '1',
+                    'id': '2',
                     'title': 'Looking for new growth opportunities?',
                     'author': {
                         'name': 'Jane Doe'
